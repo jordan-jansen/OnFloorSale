@@ -1,6 +1,5 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../cartContext.jsx";
-import { useState } from "react";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -39,7 +38,7 @@ export default function Login() {
             required
           />
           <button type="submit" style={styles.button}>
-            Log in
+            Log In
           </button>
         </form>
       </>

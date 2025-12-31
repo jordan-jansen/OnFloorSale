@@ -10,6 +10,11 @@ export function CartProvider({ children }) {
   const [store, setStore] = useState("");
   const [username, setUsername] = useState("");
 
+  // 🔹 NEW: data for the last confirmed order
+  const [orderTotal, setOrderTotal] = useState(0);
+  const [orderRefNo, setOrderRefNo] = useState("");
+  const [orderBarcode, setOrderBarcode] = useState("");
+
   function addItem(item) {
     setItems(prev => [
       ...prev,
@@ -33,14 +38,22 @@ export function CartProvider({ children }) {
         removeItem,
         clearCart,
 
-        store,
-        setStore,
-        username,
-        setUsername,
         customerMobile,
         setCustomerMobile,
         floorOrder,
         setFloorOrder,
+        store,
+        setStore,
+        username,
+        setUsername,
+
+        // expose new order fields
+        orderTotal,
+        setOrderTotal,
+        orderRefNo,
+        setOrderRefNo,
+        orderBarcode,
+        setOrderBarcode,
       }}
     >
       {children}

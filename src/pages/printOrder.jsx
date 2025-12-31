@@ -1,23 +1,56 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../cartContext.jsx";
 
+// Fallback: random 12-digit number
+function makeRandom12() {
+  let result = "";
+  for (let i = 0; i < 12; i++) {
+    result += Math.floor(Math.random() * 10).toString();
+  }
+  return result;
+}
+
+// Fallback: 12-digit timestamp YYMMDDHHMMSS
+function makeTimestampBarcode(date = new Date()) {
+  const pad2 = (n) => n.toString().padStart(2, "0");
+  const yy = date.getFullYear().toString().slice(-2);
+  const mm = pad2(date.getMonth() + 1);
+  const dd = pad2(date.getDate());
+  const hh = pad2(date.getHours());
+  const mi = pad2(date.getMinutes());
+  const ss = pad2(date.getSeconds());
+  return `${yy}${mm}${dd}${hh}${mi}${ss}`;
+}
+
 export default function PrintOrder() {
   const navigate = useNavigate();
-  const { items, store, username,customerMobile } = useCart();
-  
+  const {
+    items,
+    store,
+    username,
+    customerMobile,
+
+    // new values we’ll set in Cart.jsx
+    orderTotal,
+    orderRefNo,
+    orderBarcode,
+  } = useCart();
+
   const now = new Date();
   const foNo = "1212";
   const mobNo = customerMobile || "N/A";
-
-  // 🔹 use store from context, fallback to something if empty
   const storeCode = store || "N/A";
 
-  const refNo = items[0]?.barcode || "000000000000";
+  // Use values from context if available, otherwise fall back
+  const refNo = orderRefNo || makeRandom12();
+  const barcode = orderBarcode || makeTimestampBarcode(now);
 
-  const amount = items.reduce(
-    (sum, item) => sum + item.price * item.quantity,
+  const amountFromItems = items.reduce(
+    (sum, item) => sum + Number(item.price) * item.quantity,
     0
   );
+  const amount = orderTotal || amountFromItems;
+
   const currency = items[0]?.currency || "AED";
 
   const dateStr = now.toLocaleDateString("en-GB");
@@ -67,7 +100,7 @@ export default function PrintOrder() {
             </span>
           </div>
 
-          {/* If you also want to show username somewhere */}
+          {/* Optional: show username */}
           {username && (
             <div className="mt-1">
               <span className="font-medium">User</span> {username}
@@ -80,14 +113,14 @@ export default function PrintOrder() {
           </div>
         </div>
 
-        {/* barcode + button as you already had... */}
+        {/* Barcode box */}
         <div className="mt-6 flex justify-center">
           <div className="inline-flex flex-col items-center">
             <div className="w-52 h-20 border bg-gray-50 flex items-center justify-center text-xs">
-              (Barcode for {refNo})
+              (Barcode for Ref {refNo})
             </div>
             <div className="mt-1 text-xs tracking-[0.2em]">
-              {refNo}
+              {barcode}
             </div>
           </div>
         </div>
