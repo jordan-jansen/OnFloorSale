@@ -8,31 +8,28 @@ export default function Login() {
   function handleLogin(e) {
     e.preventDefault();
 
-    const formData = new FormData(e.target); //  capital F
-    const storeValue = formData.get("store"); //  must match input name
-    // const usernameValue = formData.get("username");
+    const formData = new FormData(e.target);
+    const storeValue = formData.get("store");
 
-    //  save into context so other pages (like PrintOrder) can use it
     setStore(storeValue);
-    // setUsername(usernameValue);
-
     navigate("/fo-start");
   }
 
   return (
-    
-    <div style={styles.container} >
+    <div style={styles.container}>
       <>
         <h1>Login</h1>
         <form onSubmit={handleLogin} style={styles.form}>
-          {/* <input
+          {/* 
+          <input
             name="username"
             placeholder="Username"
             style={styles.input}
             required
-          /> */}
+          /> 
+          */}
           <input
-            name="store"   //  changed to lowercase "store"
+            name="store"
             placeholder="Store"
             style={styles.input}
             required
@@ -61,16 +58,11 @@ const styles = {
     cursor: "pointer",
   },
   container: {
-    minHeight: "100vh", // full page height
+    minHeight: "100vh",
     display: "flex",
-    flexDirection: "column", // stack items top-to-bottom
-    justifyContent: "center", // vertical center
-    alignItems: "center", // horizontal center
-    textAlign: "center", // center the text itself
-    },
-    
-
-
- 
-  };
-
+    flexDirection: "column",
+    justifyContent: "center",
+    alignItems: "center",
+    textAlign: "center",
+  },
+};

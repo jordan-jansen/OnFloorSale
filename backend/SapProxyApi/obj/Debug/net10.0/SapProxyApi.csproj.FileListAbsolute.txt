@@ -1,0 +1,73 @@
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\appsettings.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.staticwebassets.endpoints.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.exe
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.deps.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.runtimeconfig.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.dll
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.pdb
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.csproj.AssemblyReference.cache
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.AssemblyInfoInputs.cache
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.AssemblyInfo.cs
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.csproj.CoreCompileInputs.cache
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\scopedcss\bundle\SapProxyApi.styles.css
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxy.8A85E3A5.Up2Date
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.dll
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\refint\SapProxyApi.dll
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.pdb
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.genruntimeconfig.cache
+C:\Users\jordan.j\FloorOrderBackend\SapProxyApi\obj\Debug\net10.0\ref\SapProxyApi.dll
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\appsettings.Development.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\appsettings.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.staticwebassets.endpoints.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.exe
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.deps.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.runtimeconfig.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.dll
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\SapProxyApi.pdb
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\Microsoft.AspNetCore.OpenApi.dll
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\Microsoft.OpenApi.dll
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.Swagger.dll
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerGen.dll
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\bin\Debug\net10.0\Swashbuckle.AspNetCore.SwaggerUI.dll
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.csproj.AssemblyReference.cache
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\rpswa.dswa.cache.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.AssemblyInfoInputs.cache
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.AssemblyInfo.cs
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.csproj.CoreCompileInputs.cache
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.MvcApplicationPartsAssemblyInfo.cs
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.sourcelink.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\rjimswa.dswa.cache.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\rjsmrazor.dswa.cache.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\rjsmcshtml.dswa.cache.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\scopedcss\bundle\SapProxyApi.styles.css
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\staticwebassets.build.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\staticwebassets.build.json.cache
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\staticwebassets.development.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\staticwebassets.build.endpoints.json
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\swae.build.ex.cache
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxy.8A85E3A5.Up2Date
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.dll
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\refint\SapProxyApi.dll
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.pdb
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\SapProxyApi.genruntimeconfig.cache
+C:\Users\jordan.j\Floor Order\my-app\backend\SapProxyApi\obj\Debug\net10.0\ref\SapProxyApi.dll

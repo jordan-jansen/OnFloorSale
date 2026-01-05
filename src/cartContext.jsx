@@ -10,24 +10,32 @@ export function CartProvider({ children }) {
   const [store, setStore] = useState("");
   const [username, setUsername] = useState("");
 
-  // 🔹 NEW: data for the last confirmed order
+  // 🔹 Data for the last confirmed order (used by PrintOrder)
   const [orderTotal, setOrderTotal] = useState(0);
   const [orderRefNo, setOrderRefNo] = useState("");
   const [orderBarcode, setOrderBarcode] = useState("");
 
+  // 🔹 History of all confirmed orders (used by todaysOrders.jsx)
+  const [orders, setOrders] = useState([]);
+
   function addItem(item) {
-    setItems(prev => [
+    setItems((prev) => [
       ...prev,
-      { ...item, lineId: crypto.randomUUID() }
+      { ...item, lineId: crypto.randomUUID() },
     ]);
   }
 
   function removeItem(lineId) {
-    setItems(prev => prev.filter(item => item.lineId !== lineId));
+    setItems((prev) => prev.filter((item) => item.lineId !== lineId));
   }
 
   function clearCart() {
     setItems([]);
+  }
+
+  // Save a confirmed order snapshot
+  function addOrder(order) {
+    setOrders((prev) => [...prev, order]);
   }
 
   return (
@@ -47,13 +55,17 @@ export function CartProvider({ children }) {
         username,
         setUsername,
 
-        // expose new order fields
+        // last confirmed order fields
         orderTotal,
         setOrderTotal,
         orderRefNo,
         setOrderRefNo,
         orderBarcode,
         setOrderBarcode,
+
+        // orders history
+        orders,
+        addOrder,
       }}
     >
       {children}

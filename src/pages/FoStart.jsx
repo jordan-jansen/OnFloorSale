@@ -16,7 +16,9 @@ export default function FoStart() {
     setCustomerMobile(mobile);
     navigate("/product"); 
   }
-  
+    function handleHistory() {
+      navigate("/history")
+    }
 
   function handleSearch() {
     if (floorOrder.length > 0 && mobile.length == 0){
@@ -73,6 +75,13 @@ export default function FoStart() {
           className="w-full border rounded-md px-4 py-2 hover:bg-gray-100"
         >
           Search FO
+        </button>
+        <br/>
+        <button
+          onClick={handleHistory}
+          className="w-full border rounded-md px-4 py-2 hover:bg-gray-100"
+        >
+          View today's Orders
         </button>
 
       </div>

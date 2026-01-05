@@ -6,24 +6,27 @@ export default function Cart() {
   const {
     items,
     clearCart,
+    addOrder,          // from cartContext
     setOrderTotal,
     setOrderRefNo,
     setOrderBarcode,
+    store,
+    customerMobile,
+    username,
   } = useCart();
 
   const navigate = useNavigate();
-  console.log(items);
-
   const [showAlert, setShowAlert] = useState(false);
   const [alertMessage, setAlertMessage] = useState("");
 
+  // Subtotal from items
   const subtotal = items.reduce(
-    (sum, item) => sum + Number(item.price) * item.quantity,
+    (sum, item) => sum + Number(item.price || 0) * (item.quantity || 1),
     0
   );
 
-  // if you have VAT, you can include it like this:
-  const vat = subtotal * 0.05;           // change if your VAT is different
+  // VAT (5%)
+  const vat = subtotal * 0.05;
   const total = subtotal + vat;
 
   function goBack() {
@@ -61,36 +64,64 @@ export default function Cart() {
     }
 
     const now = new Date();
+    const createdAtISO = now.toISOString();
     const refNo = makeRandom12();
     const barcode = makeTimestampBarcode(now);
 
-    // 👉 save in context so PrintOrder can read it
+    // Save for PrintOrder page
     setOrderTotal(total);
     setOrderRefNo(refNo);
     setOrderBarcode(barcode);
 
     try {
-      // keep your API call here (adjust to your real payload)
-      await fetch("http://localhost:5181/api/orders/confirm", {
+      // Send to backend API
+      const response = await fetch("http://localhost:5181/api/orders/confirm", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           orderId: crypto.randomUUID(),
-          storeId: "1W7",
-          createdAt: now.toISOString(),
+          storeId: store || "1W7",
+          createdAt: createdAtISO,
           refNo,
           barcode,
+          customerMobile,
+          username,
           items: items.map((i) => ({
             barcode: i.barcode,
             itemNo: i.name,
             description: i.description,
-            unitPriceIncVAT: i.price,
+            unitPriceIncVAT: Number(i.price || 0),
             quantity: i.quantity,
           })),
+          totals: {
+            subtotal,
+            vat,
+            total,
+          },
         }),
       });
 
-      clearCart();           // clear the cart lines
+      if (!response.ok) {
+        throw new Error("API returned non-OK status");
+      }
+
+      // Save snapshot into local history for todaysOrders.jsx
+      addOrder({
+        id: crypto.randomUUID(),
+        createdAt: createdAtISO,
+        refNo,
+        barcode,
+        store: store || "",
+        customerMobile: customerMobile || "",
+        username: username || "",
+        subtotal,
+        vat,
+        total,
+        itemCount: items.length,
+        items: items,
+      });
+
+      clearCart();
       navigate("/print-order");
     } catch (err) {
       console.error(err);
@@ -99,23 +130,19 @@ export default function Cart() {
     }
   }
 
-  // 🔻 keep your existing JSX (table, buttons, etc), just make sure:
-  // - "Confirm Order" button calls handleConfirm
-  // - "Back" button calls goBack
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-100">
       <div className="w-full max-w-4xl bg-white shadow rounded-lg p-6">
-
         <h1 className="text-lg font-semibold mb-4">Your Cart</h1>
 
         <table className="min-w-full text-sm border">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Price</th>
-              <th>Qty</th>
-              <th>Barcode</th>
-              <th>Total</th>
+              <th className="py-1 px-2 border-b text-left">Name</th>
+              <th className="py-1 px-2 border-b text-right">Price</th>
+              <th className="py-1 px-2 border-b text-right">Qty</th>
+              <th className="py-1 px-2 border-b text-left">Barcode</th>
+              <th className="py-1 px-2 border-b text-right">Total</th>
             </tr>
           </thead>
           <tbody>
@@ -126,45 +153,69 @@ export default function Cart() {
                 </td>
               </tr>
             ) : (
-              items.map((item, i) => (
-                <tr key={i}>
-                  <td>{item.name}</td>
-                  <td>{item.price} AED</td>
-                  <td>{item.quantity}</td>
-                  <td>{item.barcode}</td>
-                  <td>
-                    {(item.price * item.quantity)} AED
-                  </td>
-                </tr>
-              ))
+              items.map((item) => {
+                const lineTotal =
+                  Number(item.price || 0) * (item.quantity || 1);
+
+                return (
+                  <tr
+                    key={item.lineId || item.barcode || item.name}
+                  >
+                    <td className="py-1 px-2 border-b">
+                      {item.name || item.description || "Item"}
+                    </td>
+                    <td className="py-1 px-2 border-b text-right">
+                      {Number(item.price || 0).toFixed(2)} AED
+                    </td>
+                    <td className="py-1 px-2 border-b text-right">
+                      {item.quantity ?? 1}
+                    </td>
+                    <td className="py-1 px-2 border-b">
+                      {item.barcode || "-"}
+                    </td>
+                    <td className="py-1 px-2 border-b text-right">
+                      {lineTotal.toFixed(2)} AED
+                    </td>
+                  </tr>
+                );
+              })
             )}
           </tbody>
         </table>
 
-        <div className="mt-4">
+        <div className="mt-4 text-sm">
           <p>Subtotal: {subtotal.toFixed(2)} AED</p>
-          <p>VAT: {vat.toFixed(2)} AED</p>
+          <p>VAT (5%): {vat.toFixed(2)} AED</p>
           <p className="font-bold">Total: {total.toFixed(2)} AED</p>
         </div>
 
         <div className="mt-6 flex gap-4">
-          <button onClick={goBack}>Back</button>
-          <button onClick={handleConfirm} className="bg-blue-600 text-white">
+          <button
+            onClick={goBack}
+            className="px-4 py-2 border rounded-md hover:bg-gray-100"
+          >
+            Back
+          </button>
+          <button
+            onClick={handleConfirm}
+            className="px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700"
+          >
             Confirm Order
           </button>
         </div>
 
         {showAlert && (
-          <div className="alert">
-            <p>{alertMessage}</p>
-            <button onClick={() => setShowAlert(false)}>OK</button>
+          <div className="mt-4 p-3 border rounded bg-red-50 text-sm">
+            <p className="mb-2">{alertMessage}</p>
+            <button
+              className="px-3 py-1 border rounded"
+              onClick={() => setShowAlert(false)}
+            >
+              OK
+            </button>
           </div>
         )}
       </div>
     </div>
   );
 }
-
-
-
-

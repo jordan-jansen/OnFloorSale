@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../cartContext.jsx";
+import Barcode from "react-barcode";
 
 // Fallback: random 12-digit number
 function makeRandom12() {
@@ -29,8 +30,6 @@ export default function PrintOrder() {
     store,
     username,
     customerMobile,
-
-    // new values we’ll set in Cart.jsx
     orderTotal,
     orderRefNo,
     orderBarcode,
@@ -43,7 +42,7 @@ export default function PrintOrder() {
 
   // Use values from context if available, otherwise fall back
   const refNo = orderRefNo || makeRandom12();
-  const barcode = orderBarcode || makeTimestampBarcode(now);
+  const barcode = orderBarcode || makeTimestampBarcode(now); // 👈 this is what we encode
 
   const amountFromItems = items.reduce(
     (sum, item) => sum + Number(item.price) * item.quantity,
@@ -60,7 +59,7 @@ export default function PrintOrder() {
   });
 
   function backHome() {
-    navigate("/product");
+    navigate("/fo-start");
   }
 
   return (
@@ -100,7 +99,6 @@ export default function PrintOrder() {
             </span>
           </div>
 
-          {/* Optional: show username */}
           {username && (
             <div className="mt-1">
               <span className="font-medium">User</span> {username}
@@ -113,14 +111,18 @@ export default function PrintOrder() {
           </div>
         </div>
 
-        {/* Barcode box */}
+        {/* 👇 Actual barcode using react-barcode */}
         <div className="mt-6 flex justify-center">
           <div className="inline-flex flex-col items-center">
-            <div className="w-52 h-20 border bg-gray-50 flex items-center justify-center text-xs">
-              (Barcode for Ref {refNo})
-            </div>
-            <div className="mt-1 text-xs tracking-[0.2em]">
-              {barcode}
+             <Barcode
+            value={String(barcode || refNo || "000000000000")} // make sure it’s a string
+            displayValue={true}   // show the number under the bars
+            fontSize={12}
+            height={60}
+            width={1.5}
+          />
+            <div className="mt-1 text-xs">
+              Ref: {refNo}
             </div>
           </div>
         </div>
@@ -130,7 +132,7 @@ export default function PrintOrder() {
             onClick={backHome}
             className="px-4 py-2 text-sm border rounded-md hover:bg-gray-100"
           >
-            Back to Products
+            Close
           </button>
         </div>
       </div>

@@ -5,6 +5,7 @@ import Product from "./pages/products.jsx";
 import Cart from "./pages/cart.jsx";
 import PrintOrder from "./pages/printOrder.jsx";
 import FoStart from "./pages/FoStart.jsx";
+import TodaysOrders from "./pages/todaysOrders.jsx";
 //import Admin from "./pages/Admin.jsx";
 
 export default function App() {
@@ -16,6 +17,8 @@ export default function App() {
       <Route path = "/cart" element = {<Cart/>}/>
       <Route path = "/print-order" element = {<PrintOrder/>}/>
       <Route path="/fo-start" element={<FoStart/>}/>
+      <Route path="/history" element={<TodaysOrders/>}/>
+      
     </Routes>
   )
 }
