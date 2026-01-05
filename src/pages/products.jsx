@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useCart } from "../cartContext.jsx";
+import { useRef, useEffect} from "react"; 
 
 export default function Product() {
   const navigate = useNavigate();
@@ -11,6 +12,9 @@ export default function Product() {
   const [quantity, setQuantity] = useState(1);
   const [loading, setLoading] = useState(false);
 
+  const barcodeInputRef = useRef(null);
+  const qtyInputRef = useRef(null);
+
   function openModal() {
     setBarcode("");
     setQuantity(1);
@@ -20,6 +24,14 @@ export default function Product() {
   function closeModal() {
     setShowModal(false);
   }
+
+  useEffect (() => {
+    if (showModal) {
+      setTimeout(() => {
+        barcodeInputRef.current?.focus();
+      }, 0);
+    }
+  }, [showModal])
 
   async function handleModalSubmit(e) {
     e.preventDefault();
@@ -129,12 +141,15 @@ export default function Product() {
             <div className="modal-card">
               <form onSubmit={handleModalSubmit} className="space-y-4">
                 <input
+                  ref={barcodeInputRef}
                   value={barcode}
                   onChange={(e) => setBarcode(e.target.value)}
+                  onBlur={() => qtyInputRef.current?.focus}
                   placeholder="Barcode"
                   required
                 />
                 <input
+                ref={qtyInputRef}
                   type="number"
                   min="1"
                   value={quantity}
